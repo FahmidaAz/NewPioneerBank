@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Pioneer Bank</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+    <div id="login">
+        <h1 class="text-center">Welcome To New Pioneer Bank</h1>
+        <div class="submit">
+            <h4>Login</h4>
+             <br>
+            <input type="text" placeholder="Email" class="form-control">
+            <br>
+            <input type="password" placeholder="Password" class="form-control">
+            <br>
+            <button id="submitButton"class="btn btn-success">Submit</button>
+        </div>
+    </div>
+
+    <!-- Transaction area -->
+
+    <div id="transactionArea" class="text-center">
+          <h1 class="text-center">Transaction Area:</h1>
+
+         <div class="row text-center">
+             <div class="col-md-4">
+                 <div class="status"id="deposit">
+                    <h5>Deposit</h5>
+                    <h2>$<span id="currentDepo">00</span></h2>
+                 </div>
+             </div>
+             <div class="col-md-4 withdraw">
+                 <div class="status" id="withdraw">
+                    <h5>Withdraw</h5>
+                    <h2>$<span id="currentWithdraw">00</span></h2>
+                 </div>
+             </div>
+             <div class="col-md-4 balance">
+                <div class="status" id="balance">
+                    <h5>Balance</h5>
+                    <h2>$<span id="currentBal">1200</span></h2>
+                </div>
+             </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6" id="amount">
+                   <div class="submit">
+                    
+                    <h4>Deposit Amount</h4>
+                    <input id="depositAmount"type="text" class="form-control" placeholder="$ amount you want to withdraw">
+                    <br>
+                    <button class="btn btn-success" id="addDeposit">Deposit</button>
+                    
+                   </div>
+                </div>
+                <div class="col-md-6" id="amount">
+                   <div class="submit">
+                        <h4>Withdraw Amount</h4>
+                        <input id= "withdrawAmount"type="text" class="form-control" placeholder="$ amount you want to withdraw">
+                        <br>
+                        <button class="btn btn-success" id="addWithdraw">Withdraw</button>
+                       
+                   </div>
+                </div>
+            </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+    <script>
+        document.getElementById('submitButton').addEventListener('click',function(){
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('transactionArea').style.display = 'block';
+        })
+
+        //deposit button event handler
+        document.getElementById('addDeposit').addEventListener('click', function(){
+             var depoAmount = document.getElementById('depositAmount');
+             var depoValue= depoAmount.value;
+             var depoNumber = parseFloat(depoValue);
+
+            //  var currentDepo = document.getElementById('currentDepo');
+            //  var currentDepoAmount = currentDepo.innerText;
+            //  var depositAmount = parseFloat(currentDepoAmount);
+
+            //  var totalDeposit = depoNumber + depositAmount;
+            //  currentDepo.innerText= totalDeposit;
+             updateDepoBal('currentDepo', depoNumber);
+             depoAmount.value = "";
+            //  var currentBal = document.getElementById('currentBal');
+            //  var currentBalAmount = currentBal.innerText;
+            //  var balanceAmount = parseFloat(currentBalAmount);
+              
+            //   var totalBalance = depoNumber + balanceAmount;
+            //   currentBal.innerText  = totalBalance;
+
+            updateDepoBal('currentBal',depoNumber);
+                  
+        })
+
+        function updateDepoBal(id, depoNumber){
+            var current = document.getElementById(id);
+             var currentAmount = current.innerText;
+             var currentNumber = parseFloat(currentAmount);
+              
+              var total = depoNumber + currentNumber;
+              current.innerText  = total;
+        }
+
+        //withdraw button event handler
+     document.getElementById('addWithdraw').addEventListener('click',function(){
+         var drawAmount = document.getElementById('withdrawAmount');
+         var drawValue = drawAmount.value;
+         var drawNumber = parseFloat(drawValue);
+
+         var currentWithdraw = document.getElementById('currentWithdraw');
+         var currentWithdrawAmount = currentWithdraw.innerText;
+         var currentWithdrawNumber = parseFloat(currentWithdrawAmount);
+
+         var totalWithdraw = drawNumber;
+
+         currentWithdraw.innerText = totalWithdraw;
+         drawAmount.value = "";
+            currentBal = document.getElementById('currentBal');
+             currentBalAmount = currentBal.innerText;
+              balanceAmount = parseFloat(currentBalAmount);
+              if(drawNumber>balanceAmount){
+                  alert('Your account doesnt have enough balance...!!');
+                currentWithdraw.innerText = '00';
+
+              }else{
+             totalBalance = balanceAmount - totalWithdraw;
+              currentBal.innerText  = totalBalance;
+              }
+     })
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+h1{
+    margin:10px;
+    padding:30px;
+    justify-content: center;
+    align-items: center;
+    color:blue;
+    text-shadow: 3px 4px 10px black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+body{
+    background-color: rgb(158, 185, 236);
+}
+.submit{
+ 
+    margin:120px;
+    margin-left: 130px;
+    padding: 40px;
+    border: 1px solid gray;
+    border-radius:  15px;
+    box-shadow: 2px 3px 15px black;
+    width: 70%;
+    justify-content: center;
+    background-color: aliceblue;
+}
+#transactionArea{
+    display: none;
+}
+.status{
+    border:1px solid  rgb(158, 185, 236);
+    border-radius: 30px;
+    box-shadow: 2px 2px 5px gray;
+    margin:100px;
+    padding:70px;
+    padding-right: 170px;
+    width:100px;
+    color:white;
+
+}
+#deposit{
+    background-color: dodgerblue;
+
+}
+#withdraw{
+    background-color: indigo;
+}
+#balance{
+    background-color: mediumblue;
+}
+/* #amount{
+    border:1px solid black;
+    border-radius: 15px;
+    background-color:rgb(221, 229, 245);
+    margin:40px;
+    padding:60px;
+    width:600px;
+} */
